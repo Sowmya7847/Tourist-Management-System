@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Auth System</title>
     <style>
+        /* Default Light Theme */
         body {
             font-family: 'Cinzel', serif; /* Mughal-style elegant font */
             background-color: #f0e6d6; /* Light golden background for Mughal theme */
@@ -15,6 +16,7 @@
             transition: background 0.5s, color 0.5s;
         }
 
+        /* Dark Theme */
         body.dark-theme {
             background-color: #1e1e2e;
             color: #ffffff;
@@ -159,6 +161,12 @@
         <a href="javascript:void(0)" onclick="showPage('login-page')" class="back-btn">Back</a>
     </div>
 
+    <!-- Button to navigate to home.html -->
+    <div class="container hidden" id="home-button-container">
+        <h2>You're logged in!</h2>
+        <button class="btn" onclick="window.location.href='home.html'">Go to Home</button>
+    </div>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
@@ -191,8 +199,9 @@
             
             signInWithEmailAndPassword(auth, email, password)
                 .then(() => {
-                    // Redirect to home page after successful login
-                    window.location.href = "home.html"; 
+                    // Show the button to navigate to home
+                    document.getElementById('home-button-container').classList.remove('hidden');
+                    document.getElementById('login-page').classList.add('hidden');
                 })
                 .catch((error) => alert(error.message));
         });
