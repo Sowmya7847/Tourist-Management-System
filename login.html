@@ -185,7 +185,7 @@
             const password = document.getElementById("login-password").value;
             
             signInWithEmailAndPassword(auth, email, password)
-                .then(() => window.location.href = "home.html")
+                .then(() => window.location.href = "home.html")  // Redirect to home after login
                 .catch((error) => alert(error.message));
         });
 
@@ -213,7 +213,6 @@
                 document.body.style.color = "#5c4033";
             }
         }
-           <a href="home.html" target="_blank" style="text-decoration: none;">
     </script>
 </body>
 </html>
