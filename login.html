@@ -15,6 +15,11 @@
             transition: background 0.5s, color 0.5s;
         }
 
+        body.dark-theme {
+            background-color: #1e1e2e;
+            color: #ffffff;
+        }
+
         .container {
             max-width: 400px;
             margin: 50px auto;
@@ -185,7 +190,10 @@
             const password = document.getElementById("login-password").value;
             
             signInWithEmailAndPassword(auth, email, password)
-                .then(() => window.location.href = "home.html")  // Redirect to home after login
+                .then(() => {
+                    // Redirect to home page after successful login
+                    window.location.href = "home.html"; 
+                })
                 .catch((error) => alert(error.message));
         });
 
@@ -205,13 +213,6 @@
 
         function toggleTheme() {
             document.body.classList.toggle("dark-theme");
-            if (document.body.classList.contains("dark-theme")) {
-                document.body.style.background = "#1e1e2e";
-                document.body.style.color = "#ffffff";
-            } else {
-                document.body.style.background = "#f0e6d6";
-                document.body.style.color = "#5c4033";
-            }
         }
     </script>
 </body>
