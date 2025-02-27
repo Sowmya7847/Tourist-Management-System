@@ -116,7 +116,6 @@
             font-size: 16px;
             color: #DAA520;
         }
-
     </style>
 
     <!-- Google Fonts for Mughal Style -->
@@ -164,7 +163,7 @@
     <!-- Button to navigate to home.html -->
     <div class="container hidden" id="home-button-container">
         <h2>You're logged in!</h2>
-        <button class="btn" onclick="window.location.href='home.html'">Go to Home</button>
+        <button class="btn" onclick="window.open('home.html', '_blank')">Go to Home</button>
     </div>
 
     <script type="module">
@@ -189,7 +188,11 @@
             const password = document.getElementById("signup-password").value;
             
             createUserWithEmailAndPassword(auth, email, password)
-                .then(() => alert("Signup successful!"))
+                .then(() => {
+                    alert("Signup successful!");
+                    // Navigate to home after signup
+                    window.open('home.html', '_blank');
+                })
                 .catch((error) => alert(error.message));
         });
 
